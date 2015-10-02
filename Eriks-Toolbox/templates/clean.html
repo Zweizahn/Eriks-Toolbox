@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}{% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block header %}
+    <ul class="nav nav-pills">
+        <li><a href="/">Home</a></li>
+        <li class="active"><a href="/clean">clean log file</a></li>
+        <li><a href="/count">count SCSI</a></li>
+        <li><a href="/ismon">ismon</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1>Erik's Toolbox</h1>
+    <p>
+        Input: messages file
+    </p>
+    <p>
+        Ouput: messages file where lines with configured strings were removed
+    </p>
+    <h3>Upload new File</h3>
+    <form method="post" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        {{ form.filename }}
+        <input type="submit">
+    </form>
+{% endblock %}

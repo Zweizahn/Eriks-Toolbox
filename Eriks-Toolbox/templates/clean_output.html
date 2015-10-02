@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}{% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block header %}
+    <ul class="nav nav-pills">
+        <li><a href="/">Home</a></li>
+        <li class="active"><a href="/clean">clean log file</a></li>
+        <li><a href="/count">count SCSI</a></li>
+        <li><a href="/ismon">ismon</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1>Erik's Toolbox</h1>
+    <p>
+        ({{ output }}
+    </p>
+{% endblock %}

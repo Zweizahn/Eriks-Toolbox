@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}{% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block header %}
+    <ul class="nav nav-pills">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/clean">clean log file</a></li>
+        <li><a href="/count">count SCSI</a></li>
+        <li><a href="/ismon">ismon</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1>Erik's Toolbox</h1>
+    <p class="important">
+        Please choose your option in the header bar.
+    </p>
+{% endblock %}
