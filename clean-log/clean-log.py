@@ -7,6 +7,7 @@
 #
 # Todos:
 # * Optional log file name, default is messages
+# * Offer time range to include messages
 
 # Imports
 import sys
@@ -20,24 +21,36 @@ __version__ = 'v1'
 __last_changed__ = '2015-00-19'
 
 to_delete = []
+line = ''
 
-path = sys.argv[0].split('\\')
-name = path[len(path)-1]
-print(path)
-
-exit()
+# Read the configuration file
+conffile = os.path.dirname(sys.argv[0]) + '/clean-log.conf'
+on = False
+try:
+    with open(conffile) as config:
+        for line in config:
+            line = line.strip()
+            if line.startswith('[on]'):
+                on = True
+            elif line.startswith('[off]'):
+                on = False
+            elif on and not line.startswith('#') and not line == '':
+                to_delete.append(line)
+except IOError as err:
+    print('File error ' + str(err))
+    exit()
 
 # Compute longest string to delete. Just used for a statistical output at the end
 max_length = 0
 for key in to_delete:
     if len(key) > max_length: max_length = len(key)
 
-print("Starting {0:} {1:}".format(sys.argv[0], version))
+print("Starting {0:} {1:}".format(sys.argv[0], __version__))
 print("Deleting lines from file 'message' containing the following strings:")
 print(to_delete)
 
 try:
-    messages = open("messages")
+    messages = open("messages",'r',encoding = "ISO-8859-1")
 except:
     print("messages file does not exist ()")
     exit()
@@ -55,10 +68,6 @@ if not os.path.exists(filename):
 else:
     print("\nOutfile {} exists! Script will terminate", format(filename))
     exit()
-
-# Crreate dict to count deleted lines
-# for word in to_delete:
-#  count[word] = 0
 
 count = dict()
 linenr = 0

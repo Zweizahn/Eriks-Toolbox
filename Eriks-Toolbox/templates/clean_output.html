@@ -16,8 +16,13 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Erik's Toolbox</h1>
-    <p>
-        ({{ output }}
-    </p>
+    <h3>Erik's Toolbox</h3>
+    <div style="font-size:10px; font-family: monospace" >
+        <code class="language-html" data-lang="html">
+            <p > {% for line in output %}
+                    <p> {{ line }} </p>
+                {% endfor %}
+            </p>
+        </code>
+    </div>
 {% endblock %}
