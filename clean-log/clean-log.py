@@ -77,7 +77,7 @@ for line in messages:
     bool = True
     for word in to_delete:
         if word in line:
-            count[word] = count.get(word, 0) + 1
+            count[word] =
             deletenr += 1
             bool = False
             break
